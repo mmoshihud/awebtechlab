@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login',[PagesController::class,'login']);
+
+Route::get('/registration',[PagesController::class,'register']);
+
+Route::get('/student/create',[StudentController::class,'create']);
+
+Route::get('/student/list',[StudentController::class,'list']);
+
+Route::get('/student/get',[StudentController::class,'get']);
