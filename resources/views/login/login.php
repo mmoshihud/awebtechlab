@@ -10,8 +10,14 @@
     <form action="">
         <input type="text" placeholder="Username"><br>
         <input type="text" placeholder="Password"><br>
-        <input type="text" placeholder="again"><br>
-        <input type="submit" value="Login"> 
+        <input type="submit" value="Login">
+        <ul>
+            <?php
+            for($i=0;$i<=10;$i++){
+                echo "$i";
+            }
+            ?>
+        </ul>
     </form>
     
 </body>
