@@ -6,29 +6,36 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function list(){
+    public function list()
+    {
         $students = array();
-        for($i=0;$i<10;$i++){
+        for ($i = 0; $i < 10; $i++) {
             $student = array(
-                "id" => $i+1,
-                "name" =>"Student ".($i+1),
+                "id" => $i + 1,
+                "name" => "Student " . ($i + 1),
                 "dept" => "CS"
             );
             $student = (object)$student;
             $students[] = $student;
         }
-        return view('student.list')->with('students',$students);
+        return view('student.list')->with('students', $students);
     }
-    public function create(){
+    public function create()
+    {
         return view('student.create');
     }
-    public function get(){
+    public function get()
+    {
         $name = "Tanvir Ahmed";
         $id = "123";
-        $courses = ["PL1","PL2","WEBTECH","JAVA","OS"];
+        $courses = ["PL1", "PL2", "WEBTECH", "JAVA", "OS"];
         return view('student.get')
-        ->with('name',$name)
-        ->with('id',$id)
-        ->with('courses',$courses);
+            ->with('name', $name)
+            ->with('id', $id)
+            ->with('courses', $courses);
+    }
+    public function details($id)
+    {
+        return "OK with $id";
     }
 }

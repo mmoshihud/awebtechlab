@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function login(){
+    public function login()
+    {
         return view('login.login');
     }
-    public function register(){
+    public function register()
+    {
         return view('login.registration');
     }
 }

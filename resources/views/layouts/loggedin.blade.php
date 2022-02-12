@@ -7,11 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="header">
-        <a href="/student/list">List</a>
-        <a href="/student/create">Create</a>
-        <a href="/student/get">Get</a>
-    </div>
+    @include('inc.header')
     @yield('content')
     @yield('demo2')
     <div id="footer">
