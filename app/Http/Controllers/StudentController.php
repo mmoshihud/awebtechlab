@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use GuzzleHttp\Psr7\Request;
 
 class StudentController extends Controller
 {
@@ -36,6 +36,6 @@ class StudentController extends Controller
     }
     public function details($id)
     {
-        return "OK with $id";
+        return "OK with  id $id";
     }
 }

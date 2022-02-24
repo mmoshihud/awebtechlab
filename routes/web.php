@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\StudentController;
-use Illuminate\Routing\Route as RoutingRoute;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +19,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [PagesController::class, 'login']);
+Route::get('/login', [PagesController::class, 'login'])->name('login');
 
 Route::get('/registration', [PagesController::class, 'register']);
 
-Route::get('/student/create', [StudentController::class, 'create']);
+Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
 
 Route::get('/student/list', [StudentController::class, 'list']);
 
 Route::get('/student/get', [StudentController::class, 'get']);
 
 Route::get('/student/details/{id}', [StudentController::class, 'details']);
+
+Route::get('/student/edit/{id}', function ($id) {
+});
+
+Route::post('/registration', [PagesController::class, 'registersubmit'])->name('anyname');

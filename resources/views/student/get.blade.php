@@ -1,4 +1,4 @@
-@extends('layouts.loggedin')
+@extends('layouts.default')
 @section('content')
 <!DOCTYPE html>
 <html lang="en">

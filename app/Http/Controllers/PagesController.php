@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -13,5 +14,25 @@ class PagesController extends Controller
     public function register()
     {
         return view('login.registration');
+    }
+    public function registersubmit(Request $req)
+    {
+        $req->validate(
+            [
+                'name' => 'required|regex:/^[A-Z a-z]+$/',
+                'username' => 'required|min:5|max:20',
+                'email' => 'required|email',
+                'password' => 'required|min:8',
+                'conf_password' => 'required|same:password'
+            ],
+            [
+                'username.required' => 'Please provide username',
+                'username.max' => 'Username must not exceed 20 alphabets',
+                'conf_password.same' => 'Password and confirm password must match'
+            ]
+        );
+        $st = new Student();
+        $st->name = $req->username;
+        return "<h1>You are successfull person and your id $req->name</h1>";
     }
 }

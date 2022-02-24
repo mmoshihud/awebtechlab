@@ -1,4 +1,4 @@
-@extends('layouts.loggedin')
+@extends('layouts.default')
 @section('content')
 <h1>list</h1>
 <table border="1">
