@@ -25,13 +25,12 @@ Route::get('/registration', [PagesController::class, 'register']);
 
 Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
 
-Route::get('/student/list', [StudentController::class, 'list']);
-
 Route::get('/student/get', [StudentController::class, 'get']);
 
-Route::get('/student/details/{id}', [StudentController::class, 'details']);
-
-Route::get('/student/edit/{id}', function ($id) {
-});
+Route::get('/student/details', [StudentController::class, 'details'])->name('student.details');
 
 Route::post('/registration', [PagesController::class, 'registersubmit'])->name('anyname');
+
+Route::get('/student/list', [StudentController::class, 'list'])->name('student.list');
+
+Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('student.edit');

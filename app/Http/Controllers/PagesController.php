@@ -22,7 +22,7 @@ class PagesController extends Controller
                 'name' => 'required|regex:/^[A-Z a-z]+$/',
                 'username' => 'required|min:5|max:20',
                 'email' => 'required|email',
-                'password' => 'required|min:8',
+                'password' => 'required|min:1',
                 'conf_password' => 'required|same:password'
             ],
             [
@@ -32,7 +32,11 @@ class PagesController extends Controller
             ]
         );
         $st = new Student();
-        $st->name = $req->username;
+        $st->name = $req->name;
+        $st->username = $req->username;
+        $st->password = $req->password;
+        $st->email = $req->email;
+        $st->save(); //runs query in db
         return "<h1>You are successfull person and your id $req->name</h1>";
     }
 }

@@ -2,23 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Psr7\Request;
+use App\Models\Student;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
     public function list()
     {
-        $students = array();
-        for ($i = 0; $i < 10; $i++) {
-            $student = array(
-                "id" => $i + 1,
-                "name" => "Student " . ($i + 1),
-                "dept" => "CS"
-            );
-            $student = (object)$student;
-            $students[] = $student;
-        }
-        return view('student.list')->with('students', $students);
+        $data = Student::all(); //select * from students
+        return view('student.list')->with('st', $data);
     }
     public function create()
     {
@@ -34,8 +26,16 @@ class StudentController extends Controller
             ->with('id', $id)
             ->with('courses', $courses);
     }
-    public function details($id)
+    public function details(Request $req)
     {
-        return "OK with  id $id";
+        return view('student.get')
+            ->with('name', $req->name)
+            ->with('id', $req->id);
+    }
+    public function edit(Request $req)
+    {
+        $id = $req->id;
+        $student = Student::where('id', $req->id)->first();
+        return $student;
     }
 }
