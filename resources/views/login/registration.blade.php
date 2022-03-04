@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-    <form action="{{ route('anyname') }}" method="post">
+    <form action="{{ route('student.register') }}" method="post">
         {{ csrf_field() }}
         <input type="text" name="name" value="{{ old('name') }}" placeholder="Name"><br>
         @error('name')

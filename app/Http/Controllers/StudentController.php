@@ -10,7 +10,7 @@ class StudentController extends Controller
     public function list()
     {
         $data = Student::all(); //select * from students
-        return view('student.list')->with('st', $data);
+        return view('student.list')->with('students', $data);
     }
     public function create()
     {
@@ -34,8 +34,20 @@ class StudentController extends Controller
     }
     public function edit(Request $req)
     {
-        $id = $req->id;
-        $student = Student::where('id', $req->id)->first();
-        return $student;
+        $std = Student::where('id', $req->id)->first();
+        return view('student.edit')
+            ->with('id', $req->id)
+            ->with('username', $std->username)
+            ->with('name', $std->name)
+            ->with('email', $std->email);
+    }
+    public function update(Request $req)
+    {
+        $st = Student::where('id', $req->id)->first();
+        $st->name = $req->name;
+        $st->username = $req->username;
+        $st->email = $req->email;
+        $st->save();
+        return redirect("/student/list");
     }
 }

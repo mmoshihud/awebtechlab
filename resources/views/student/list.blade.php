@@ -15,6 +15,9 @@
 
     <div class="container">
         <h1>Student List</h1>
+        <h2>
+
+        </h2>
         <table class="table table-bordered">
             <tr>
                 <th>Name</th>
@@ -25,7 +28,7 @@
                 <th></th>
 
             </tr>
-            @foreach ($st as $s)
+            @foreach ($students as $s)
                 <tr>
                     <td><a
                             href="{{ route('student.details', ['id' => $s->id, 'name' => $s->name]) }}">{{ $s->name }}</a>
