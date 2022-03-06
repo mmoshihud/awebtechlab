@@ -18,13 +18,19 @@
                     <a class="nav-link" href="/student/list">List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('student.create') }}">Create</a>
+                    <a class="nav-link" href="{{ route('profile.view') }}">View Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/student/get">Get</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    @if (!Session::has('username'))
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    @endif
+                    @if (Session::has('username'))
+                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                    @endif
+
                 </li>
             </ul>
             <form class="d-flex">

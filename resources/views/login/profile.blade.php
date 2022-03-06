@@ -9,7 +9,21 @@
 </head>
 
 <body>
-    <h1>hi</h1>
+    <h1>Hi, {{ session('username') }}</h1>
+    <a href="/student/list">Home</a>
+    <p id="demo"></p>
+
+    <script>
+        let text = "";
+        const fruits = ["apple", "orange", "cherry"];
+        fruits.forEach(myFunction);
+
+        document.getElementById("demo").innerHTML = text;
+
+        function myFunction(item, index) {
+            text += index + ": " + item + "<br>";
+        }
+    </script>
 </body>
 
 </html>

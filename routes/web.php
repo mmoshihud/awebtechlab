@@ -21,7 +21,11 @@ Route::get('/', function () {
 
 Route::get('/login', [PagesController::class, 'login'])->name('login');
 
-Route::post('/login', [PagesController::class, 'profile_view'])->name('prof');
+Route::get('/logout', [PagesController::class, 'logout'])->name('logout');
+
+Route::post('/login', [PagesController::class, 'profile_login'])->name('profile.login');
+
+Route::get('/profile', [PagesController::class, 'profile_view'])->name('profile.view');
 
 Route::get('/registration', [PagesController::class, 'register']);
 

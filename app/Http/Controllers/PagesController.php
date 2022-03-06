@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PagesController extends Controller
 {
@@ -11,12 +12,24 @@ class PagesController extends Controller
     {
         return view('login.login');
     }
-    public function profile_view(Request $req)
+    public function logout()
+    {
+        session()->flush();
+        return redirect()->route('login');
+    }
+    public function profile_login(Request $req)
     {
         $std = Student::where('username', $req->uname)->where('password', hash('sha3-256', $req->psw))->first();
-        if ($std)
+        if ($std) {
             session()->put('username', $std->username);
-        else return "failed";
+            return redirect()->route('student.list');
+        } else {
+            return "failed";
+        }
+    }
+    public function profile_view()
+    {
+        return view('login.profile');
     }
     public function encrypt()
     {

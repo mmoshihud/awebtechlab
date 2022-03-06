@@ -16,7 +16,9 @@ class Authentication
      */
     public function handle(Request $request, Closure $next)
     {
-        echo "<h1>Hi i am from middleware you will get restricted soon :)</h1>";
+        if ($request->session()->has('username'));
+        else
+            return redirect()->route('login');
         return $next($request);
     }
 }
