@@ -21,6 +21,8 @@ Route::get('/', function () {
 
 Route::get('/login', [PagesController::class, 'login'])->name('login');
 
+Route::post('/login', [PagesController::class, 'profile_view'])->name('prof');
+
 Route::get('/registration', [PagesController::class, 'register']);
 
 Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
@@ -31,8 +33,12 @@ Route::get('/student/details', [StudentController::class, 'details'])->name('stu
 
 Route::post('/registration', [PagesController::class, 'registersubmit'])->name('student.register');
 
-Route::get('/student/list', [StudentController::class, 'list'])->name('student.list');
+Route::get('/student/list', [StudentController::class, 'list'])->name('student.list')->middleware('authentication');
 
 Route::get('/student/edit', [StudentController::class, 'edit'])->name('student.edit');
 
 Route::post('/student/edit', [StudentController::class, 'update'])->name('student.update');
+
+Route::get('/encrypt', [PagesController::class, 'encrypt'])->name('enc');
+
+Route::post('/encryption', [PagesController::class, 'encryption'])->name('encs');

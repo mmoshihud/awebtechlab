@@ -446,6 +446,9 @@
             </div>
         </div>
     </nav>
+    <div>
+        <h5>The current Laravel version is {{ app()->version() }}</h5>
+    </div>
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         @if (Route::has('login'))

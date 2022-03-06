@@ -11,6 +11,25 @@ class PagesController extends Controller
     {
         return view('login.login');
     }
+    public function profile_view(Request $req)
+    {
+        $std = Student::where('username', $req->uname)->where('password', hash('sha3-256', $req->psw))->first();
+        if ($std)
+            session()->put('username', $std->username);
+        else return "failed";
+    }
+    public function encrypt()
+    {
+        return view('/login/encrypt');
+    }
+    public function encryption(Request $req)
+    {
+        $text = $req->input('name');
+        $md5 = md5($text);
+        $sha = hash('sha256', $text);
+        $sha1 = hash('sha3-256', $text);
+        return "Md5 encryption: $md5 <br>SHA-256 encryption: $sha <br> Shah-3-256 encryption: $sha1";
+    }
     public function register()
     {
         return view('login.registration');
@@ -34,9 +53,9 @@ class PagesController extends Controller
         $st = new Student();
         $st->name = $req->name;
         $st->username = $req->username;
-        $st->password = $req->password;
+        $st->password = hash('md5', $req->password);
         $st->email = $req->email;
         $st->save(); //runs query in db
-        return "<h1>You are successfull person and your id $req->name</h1>";
+        return redirect("/student/list");
     }
 }
